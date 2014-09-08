@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="htmlxprs">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS 1.3 Form Validations</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.3.0-rc.0/angular-messages.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="DemoController">
+  <form name="demoForm" novalidate>
+    Username:
+    <input type="text" name="username" ng-model="username" username-validator ng-required="true" /> <span ng-show="demoForm.username.$pending">Checking Availability . . .</span>
+    <div class="messages" ng-messages="demoForm.username.$error" ng-if="demoForm.username.$touched || demoForm.$submitted">
+      <div class="error-message" ng-message="required">Username is required.</div>
+      <div class="error-message" ng-message="username">Username must contain only letters and numbers.</div>
+      <div class="error-message" ng-message="usernameAvailability">Sorry! Username has been taken</div>
+    </div>
+    <div>
+      <input type="submit" value="Submit" />
+    </div>
+  </form>
+</body>
+
+</html>
